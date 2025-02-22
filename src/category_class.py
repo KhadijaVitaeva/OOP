@@ -40,15 +40,14 @@ class Category(ReprMixin):
         if not isinstance(product, Product):
             raise TypeError('Добавлять в категорию можно только объекты класса Product.')
         self.__products.append(product)
+        Category.number_of_products += 1
 
     @property
-    def products(self) -> list[Product]:
-        """
-        Выводит список товаров в формате: Продукт, 80 руб. Остаток: 15 шт.
-        """
+    def products(self) -> str:
+        result = ""
         for product in self.__products:
-            print(product)
-        return self.__products
+            result += f"{str(product)}\n"
+        return result
 
     @property
     def average_price(self) -> float:

@@ -2,12 +2,14 @@ import json
 from category_class import Category
 from product_class import Product
 
+
 def load_data() -> list:
     """ Загружает список категорий и товаров из файла """
 
     with open('products.json', encoding='utf-8') as file:
         data = json.load(file)
         return data
+
 
 def create_class_objects(data: list) -> list[Category]:
     """ Создает объекты класса категория и класса продукт """

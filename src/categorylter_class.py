@@ -1,6 +1,7 @@
 from category_class import Category
 from src.product_class import Product
 
+
 class CategoryIter:
     """Класс, принимающий на вход объект категория и дающий возможность использовать цикл for для прохода по всем товарам данной категории"""
 
