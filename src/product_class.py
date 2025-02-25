@@ -33,19 +33,15 @@ class Product(ReprMixin, AbstractProduct):
         return self.__price * self.quantity + other.__price * other.quantity
 
     @classmethod
-    def create_product(cls, name: str, description: str, price: float, quantity: int, color: str):
-        """Создаёт товар и возвращает объект, дополнительно проверяя наличие такого же товара"""
-        self = cls(name, description, price, quantity, color)
-
-        for good in cls.goods_created:
-            if self.name == good.name:
-                self.quantity += good.quantity
-                self.__price = max(self.__price, good.price)
-                cls.goods_created.remove(good)
-                break
-
-        cls.goods_created.append(self)
-        return self
+    def new_product(cls, new_product_info) -> "Product":
+        # разбираем словарь на аргументы для инициализации
+        name = new_product_info['name']
+        description = new_product_info['description']
+        price = new_product_info['price']
+        quantity = new_product_info['quantity']
+        color = new_product_info['color']
+        # создаём и возвращаем новый продукт
+        return cls(name, description, price, quantity, color)
 
     @property
     def price(self) -> float:

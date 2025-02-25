@@ -1,10 +1,9 @@
-class ReprMixin: """ Класс, выводящий сообщение о том, что объект был создан и отвечающий за repr всех дочерних объектов """
-
+class ReprMixin:
+    """ Класс, выводящий сообщение о том, что объект был создан и отвечающий за repr всех дочерних объектов """
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         print("Создан объект ", repr(self))
-
 
     def __repr__(self):
         attributes = []
@@ -13,4 +12,3 @@ class ReprMixin: """ Класс, выводящий сообщение о том
             attributes.append(string)
         attrs = ", ".join(attributes)
         return f'{self.__class__.__name__}({attrs})'
-
